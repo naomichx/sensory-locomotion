@@ -1,0 +1,44 @@
+=====================================================================
+QUICK SETUP REFERENCE - Custom Gymnasium Environments
+=====================================================================
+
+This project uses CUSTOM gymnasium environments. Here's what you need:
+
+1. CUSTOM ENVIRONMENT FILES (located in this directory):
+   ✓ my_ant_v5.py
+   ✓ my_half_cheetah_v5.py
+
+2. WHERE TO COPY THEM:
+   Copy both files to your gymnasium installation:
+   
+   venv/lib/python3.9/site-packages/gymnasium/envs/mujoco/
+
+3. WHAT MAKES THEM CUSTOM:
+   - Modified reward functions with target velocity tracking
+   - Exponential reward: exp(-(velocity_error)² / target_velocity)
+   - HalfCheetah includes time as observation input
+   - Custom termination conditions
+
+4. REGISTRATION REQUIRED:
+   After copying, you must register them in gymnasium:
+   
+   a) Edit: venv/lib/python3.9/site-packages/gymnasium/envs/mujoco/__init__.py
+      Add imports and __all__ entries
+   
+   b) Edit: venv/lib/python3.9/site-packages/gymnasium/envs/__init__.py
+      Add register() calls for my_Ant-v5 and my_HalfCheetah-v5
+
+📖 See README.md for detailed step-by-step instructions 📖
+
+=====================================================================
+VERIFY INSTALLATION:
+
+Run this in Python to check if setup is correct:
+
+    import gymnasium as gym
+    env = gym.make('my_Ant-v5', target_velocity=2, render_mode='rgb_array')
+    print("✓ Custom environments installed correctly!")
+    env.close()
+
+=====================================================================
+
