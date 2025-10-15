@@ -75,7 +75,7 @@ agent_name = 'ant'
 
 path_output = os.path.join(os.getcwd(), f'{agent_name}_folder')
 os.makedirs(path_output, exist_ok=True)
-nb_train = 1e6  # Total number of training timesteps
+nb_train = 5e5  # Total number of training timesteps
 n_seed = 1  # Number of different random seeds to run
 target_velocity = 2  # Target velocity for the agent (used for Ant)
 parallelize = False  # Whether to use parallel environments for training
